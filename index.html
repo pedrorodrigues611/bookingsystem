@@ -97,6 +97,13 @@
       z-index: 9999 !important;
     }
 
+    /* Segurança adicional */
+    section, .columnStripe, .row {
+      position: relative !important;
+      z-index: 1 !important;
+      overflow: visible !important;
+    }
+
     #guestsDisplay {
       padding: 16px 16px 16px 50px;
       border: 1px solid #1c3c4c;
@@ -176,34 +183,15 @@
     </div>
 
     <div class="form-group">
-      <input 
-        type="text" 
-        id="checkin" 
-        name="checkin" 
-        class="icon-calendar" 
-        placeholder="Check-In" 
-        autocomplete="off"
-      >
+      <input type="text" id="checkin" name="checkin" class="icon-calendar" placeholder="Check-In" autocomplete="off">
     </div>
 
     <div class="form-group">
-      <input 
-        type="text" 
-        id="checkout" 
-        name="checkout" 
-        class="icon-calendar" 
-        placeholder="Check-Out" 
-        autocomplete="off"
-      >
+      <input type="text" id="checkout" name="checkout" class="icon-calendar" placeholder="Check-Out" autocomplete="off">
     </div>
 
     <div class="form-group">
-      <input 
-        type="text" 
-        id="guestsDisplay" 
-        value="2" 
-        readonly
-      />
+      <input type="text" id="guestsDisplay" value="2" readonly />
       <div id="guestsPopup" class="guests-popup">
         <div class="controls">
           <button type="button" id="minusBtn">-</button>
@@ -226,7 +214,7 @@
       format: 'YYYY-MM-DD',
       numberOfMonths: 2,
       numberOfColumns: 2,
-      parentEl: 'body',
+      parentEl: document.body,
       locale: {
         name: 'pt-PT-custom',
         months: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
