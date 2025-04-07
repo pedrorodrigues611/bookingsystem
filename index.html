@@ -18,7 +18,9 @@
   <style>
     /* -------- RESET BÁSICO -------- */
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
     }
 
     body {
@@ -268,21 +270,20 @@
   <script>
     /* ---- Calendário (Litepicker) ---- */
     const picker = new Litepicker({
-  element: document.getElementById('checkin'),
-  elementEnd: document.getElementById('checkout'),
-  singleMode: false,
-  lang: 'pt-PT', // Altere para 'en-US' quando o site estiver em inglês
-  format: 'YYYY-MM-DD',
-  numberOfMonths: 2,
-  numberOfColumns: 2,
-  weekdays: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'], // Dias abreviados para pt-PT (segunda a domingo)
-  tooltipText: {
-    one: 'noite',
-    other: 'noites'
-  },
-  tooltipNumber: (totalDays) => totalDays - 1
-});
-
+      element: document.getElementById('checkin'),
+      elementEnd: document.getElementById('checkout'),
+      singleMode: false,
+      lang: 'pt-PT', // Altere para 'en-US' ou 'fr-FR' conforme necessário
+      format: 'YYYY-MM-DD',
+      numberOfMonths: 2,
+      numberOfColumns: 2,
+      weekdays: ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'], // Exibe apenas as iniciais
+      tooltipText: {
+        one: 'noite',
+        other: 'noites'
+      },
+      tooltipNumber: (totalDays) => totalDays - 1
+    });
 
     /* ---- Popup de Hóspedes ---- */
     const guestsDisplay = document.getElementById('guestsDisplay');
