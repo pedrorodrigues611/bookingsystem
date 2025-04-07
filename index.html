@@ -26,19 +26,19 @@
       background-color: transparent;
       display: flex;
       justify-content: center;
-      padding: 20px;
-      color: #1c3c4c; /* Cor principal do texto */
+      padding: 40px;
+      color: #1c3c4c;
     }
 
     /* -------- FORM PRINCIPAL -------- */
     .search-bar {
       display: flex;
-      flex-wrap: nowrap; /* Força uma única linha em telas maiores */
-      gap: 20px;
+      flex-wrap: nowrap; /* Mantém tudo em linha em telas grandes */
+      gap: 40px; /* Dobro de 20px */
       background: #fff;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      padding: 60px; /* Dobro de 30px */
+      border-radius: 40px; /* Dobro de 20px */
+      box-shadow: 0 24px 72px rgba(0, 0, 0, 0.12);
       width: 100%;
       max-width: 1100px;
       align-items: center;
@@ -47,93 +47,88 @@
     /* Para quebrar em colunas no mobile */
     @media (max-width: 768px) {
       .search-bar {
-        flex-wrap: wrap;       /* Quebra para múltiplas linhas no mobile */
+        flex-wrap: wrap;
         flex-direction: column;
-        gap: 20px;
+        gap: 40px;
       }
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      position: relative; /* Para posicionar o popup de hóspedes se precisar */
+      position: relative;
       flex: 1;
     }
 
-    /* Inputs e selects */
+    /* Inputs e selects dobrados */
     .search-bar select,
     .search-bar input[type="text"] {
-      padding: 16px 16px 16px 50px; /* Espaço para ícone à esquerda */
-      border: 1px solid #1c3c4c;    /* Borda fina #1c3c4c */
-      border-radius: 8px;
-      font-size: 16px;
+      padding: 32px 32px 32px 100px; /* Dobro de 16 e 50 */
+      border: 2px solid #1c3c4c;      /* Borda dobrada em espessura */
+      border-radius: 16px;            /* Dobro de 8px */
+      font-size: 32px;                /* Dobro de 16px */
       color: #1c3c4c;
       width: 100%;
     }
 
-    /* Ícones nos inputs */
+    /* Ícones nos inputs (dobrados) */
     .icon-calendar {
-      background: url('https://cdn-icons-png.flaticon.com/512/747/747310.png') no-repeat 16px center;
-      background-size: 20px 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747310.png') no-repeat 32px center;
+      background-size: 40px 40px; /* Dobro de 20px */
     }
 
     .icon-people {
-      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
-      background-size: 20px 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 32px center;
+      background-size: 40px 40px;
     }
 
-    /* Botão */
+    /* Botão (dobrado) */
     .search-bar button {
-      padding: 16px 32px;
-      background-color: #1c3c4c; /* Fundo do botão */
-      color: #fff;               /* Texto branco */
+      padding: 32px 64px;            /* Dobro de 16 e 32 */
+      background-color: #1c3c4c;
+      color: #fff;
       border: none;
-      border-radius: 8px;
+      border-radius: 16px;           /* Dobro de 8px */
       cursor: pointer;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 32px;               /* Dobro de 16px */
       transition: background 0.3s;
-      white-space: nowrap; /* Para evitar quebra no texto do botão */
+      white-space: nowrap;
     }
 
     .search-bar button:hover {
-      background-color: #1f4a60; /* Tom mais claro ao hover */
+      background-color: #1f4a60;
     }
 
     /* -------- LITEPICKER (CALENDÁRIO) -------- */
-    /* Ajustes para deixar o calendário mais bonito */
     .litepicker {
       background-color: #fff;
-      border-radius: 10px;
+      border-radius: 20px; /* Dobro de 10px */
       color: #1c3c4c;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       font-family: 'Open Sans', sans-serif;
     }
 
-    /* Container dos meses */
     .litepicker .litepicker-months {
       display: flex;
-      gap: 10px;
-      padding: 10px;
+      gap: 20px;   /* Dobro de 10px */
+      padding: 20px; /* Dobro de 10px */
     }
 
-    /* Cada mês */
     .litepicker .month-item {
       background-color: #fff;
-      border-radius: 8px;
-      padding: 10px;
+      border-radius: 16px; /* Dobro de 8px */
+      padding: 20px;       /* Dobro de 10px */
     }
 
-    /* Cada dia */
     .litepicker .day-item {
-      border-radius: 4px;
+      border-radius: 8px;  /* Dobro de 4px */
       color: #1c3c4c;
     }
     .litepicker .day-item:hover {
       background-color: #f0f0f0;
     }
 
-    /* Dias selecionados */
     .litepicker .is-start-date,
     .litepicker .is-end-date,
     .litepicker .is-in-range {
@@ -141,70 +136,66 @@
       color: #fff !important;
     }
 
-    /* -------- POPUP HÓSPEDES -------- */
-    /* O input real que vai no form será um hidden. Este é só a exibição */
+    /* -------- POPUP HÓSPEDES (dobrado) -------- */
     #guestsDisplay {
-      padding: 16px 16px 16px 50px;
-      border: 1px solid #1c3c4c;
-      border-radius: 8px;
-      font-size: 16px;
+      padding: 32px 32px 32px 100px; /* Dobro */
+      border: 2px solid #1c3c4c;
+      border-radius: 16px;
+      font-size: 32px;
       color: #1c3c4c;
       width: 100%;
       cursor: pointer;
-      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
-      background-size: 20px 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 32px center;
+      background-size: 40px 40px;
     }
 
-    /* Popup container */
     .guests-popup {
-      display: none; /* hidden por padrão */
+      display: none;
       position: absolute;
-      top: 60px; /* Ajuste conforme a altura do input */
+      top: 80px; /* Ajustado proporcionalmente */
       left: 0;
       background: #fff;
-      border: 1px solid #1c3c4c;
-      border-radius: 8px;
-      padding: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 2px solid #1c3c4c;
+      border-radius: 16px;
+      padding: 24px; /* Dobro de 12px */
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
       z-index: 999;
-      width: 200px;
+      width: 400px; /* Dobro de 200px */
     }
 
-    /* Botões dentro do popup */
     .guests-popup button {
       background: none;
-      border: 1px solid #1c3c4c;
+      border: 2px solid #1c3c4c;
       color: #1c3c4c;
-      font-size: 16px;
-      padding: 4px 8px;
-      border-radius: 4px;
+      font-size: 32px;  /* Dobro de 16px */
+      padding: 8px 16px; /* Dobro de 4px 8px */
+      border-radius: 8px; /* Dobro de 4px */
       cursor: pointer;
-      margin: 0 5px;
+      margin: 0 10px;   /* Dobro de 0 5px */
     }
 
-    /* Centraliza as setas e o contador */
     .guests-popup .controls {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 20px; /* Dobro de 10px */
     }
 
     .guests-popup .controls span {
-      margin: 0 10px;
-      font-size: 16px;
+      margin: 0 20px;  /* Dobro de 0 10px */
+      font-size: 32px; /* Dobro de 16px */
       font-weight: 600;
     }
 
-    /* Botão OK no popup */
     .guests-popup .ok-btn {
       width: 100%;
       background-color: #1c3c4c;
       color: #fff;
       border: none;
-      margin-top: 8px;
-      padding: 8px;
+      margin-top: 16px; /* Dobro de 8px */
+      padding: 16px;    /* Dobro de 8px */
       cursor: pointer;
+      font-size: 32px;  /* Dobro de 16px */
     }
 
   </style>
@@ -212,7 +203,7 @@
 <body>
 
   <form class="search-bar" action="https://beds24.com/booking2.php" method="GET" target="_blank">
-    <!-- Campo hidden para enviar o número de hóspedes real no form -->
+    <!-- Campo hidden para enviar o número de hóspedes real -->
     <input type="hidden" name="ownerid" value="141141" />
     <input type="hidden" name="guests" id="guestsHidden" value="2" />
 
@@ -250,15 +241,14 @@
       >
     </div>
 
-    <!-- Hóspedes (só exibição) -->
+    <!-- Hóspedes (apenas exibição com popup) -->
     <div class="form-group">
       <input 
         type="text" 
         id="guestsDisplay" 
         value="2" 
-        readonly 
+        readonly
       />
-      <!-- Popup para selecionar hóspedes -->
       <div id="guestsPopup" class="guests-popup">
         <div class="controls">
           <button type="button" id="minusBtn">-</button>
@@ -305,12 +295,10 @@
 
     let guestsCount = 2; // valor inicial
 
-    // Ao clicar no campo "Hóspedes", exibe o popup
     guestsDisplay.addEventListener('click', () => {
       guestsPopup.style.display = 'block';
     });
 
-    // Botão "-"
     minusBtn.addEventListener('click', () => {
       if (guestsCount > 1) {
         guestsCount--;
@@ -320,17 +308,15 @@
       }
     });
 
-    // Botão "+"
     plusBtn.addEventListener('click', () => {
       guestsCount++;
       countSpan.textContent = guestsCount;
     });
 
-    // Botão "OK" -> fecha popup, atualiza input
     okBtn.addEventListener('click', () => {
       guestsPopup.style.display = 'none';
       guestsDisplay.value = guestsCount;
-      guestsHidden.value  = guestsCount; // valor enviado no form
+      guestsHidden.value  = guestsCount;
     });
   </script>
 </body>
