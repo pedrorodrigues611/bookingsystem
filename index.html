@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesquisa - HopertyBNB</title>
+
+  <!-- Fonte e Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Outfit', sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+    }
+    .search-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      max-width: 1000px;
+      width: 100%;
+      align-items: center;
+    }
+    .search-bar input, .search-bar select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      min-width: 150px;
+      flex: 1;
+    }
+    .search-bar label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+      font-size: 14px;
+    }
+    .search-bar .form-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 150px;
+    }
+    .search-bar button {
+      padding: 14px 24px;
+      background-color: #0c1e35;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .search-bar button:hover {
+      background-color: #1e3a5f;
+    }
+  </style>
+</head>
+<body>
+  <form class="search-bar" action="https://beds24.com/booking2.php" method="GET" target="_blank">
+    <input type="hidden" name="ownerid" value="141141" />
+    
+    <div class="form-group">
+      <label for="location">Localização</label>
+      <select id="location" name="location">
+        <option value="">Selecionar...</option>
+        <option value="Funchal">Funchal</option>
+        <option value="Santa Cruz">Santa Cruz</option>
+        <option value="Machico">Machico</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="checkin">Check-In</label>
+      <input type="text" id="checkin" name="checkin" placeholder="Selecionar data" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label for="checkout">Check-Out</label>
+      <input type="text" id="checkout" name="checkout" placeholder="Selecionar data" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <label for="guests">Hóspedes</label>
+      <input type="number" name="guests" id="guests" min="1" max="10" value="2">
+    </div>
+
+    <button type="submit">Procurar</button>
+  </form>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+  <script>
+    const picker = new Litepicker({
+      element: document.getElementById('checkin'),
+      elementEnd: document.getElementById('checkout'),
+      singleMode: false,
+      lang: 'pt-PT',
+      format: 'YYYY-MM-DD',
+      numberOfMonths: 2,
+      numberOfColumns: 2,
+      tooltipText: {
+        one: 'noite',
+        other: 'noites'
+      },
+      tooltipNumber: (totalDays) => {
+        return totalDays - 1;
+      }
+    });
+  </script>
+</body>
+</html>
