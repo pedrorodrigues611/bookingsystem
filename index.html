@@ -33,21 +33,19 @@
 
   .search-bar {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
     gap: 20px;
     background: #fff;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-    width: 100%;
-    align-items: center;
+    width: 50%;
+    align-items: stretch;
   }
 
   @media (max-width: 768px) {
     .search-bar {
-      flex-wrap: wrap;
-      flex-direction: column;
-      gap: 20px;
+      width: 90%;
     }
   }
 
@@ -55,7 +53,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    flex: 1;
+    width: 100%;
   }
 
   .search-bar select,
@@ -89,6 +87,7 @@
     font-size: 16px;
     transition: background 0.3s;
     white-space: nowrap;
+    width: 100%;
   }
 
   .search-bar button:hover {
@@ -155,7 +154,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 999;
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
   }
 
   .guests-popup button {
@@ -193,6 +192,7 @@
     font-size: 16px;
   }
 </style>
+
 
 </head>
 <body>
