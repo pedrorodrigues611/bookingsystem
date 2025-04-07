@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -7,110 +6,277 @@
   <title>Pesquisa - HopertyBNB</title>
 
   <!-- Fonte e Estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
+    rel="stylesheet"
+  >
+  
+  <!-- CSS do Litepicker -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
 
- <style>
-  body {
-    margin: 0;
-    
-    font-family: 'Outfit', sans-serif;
-    background-color: transparent;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    font-size: 18px; /* Tamanho de fonte aumentado */
-  }
+  <style>
+    /* -------- RESET BÁSICO -------- */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
 
-  .search-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px; /* Mais espaço entre campos */
-    background: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    max-width: 1100px;
-    width: 100%;
-    align-items: center;
-  }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      color: #1c3c4c; /* Cor principal do texto */
+    }
 
-  .search-bar input, .search-bar select {
-    padding: 18px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    min-width: 200px;
-    font-size: 16px;
-    flex: 1;
-  }
+    /* -------- FORM PRINCIPAL -------- */
+    .search-bar {
+      display: flex;
+      flex-wrap: nowrap; /* Força uma única linha em telas maiores */
+      gap: 20px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      width: 100%;
+      max-width: 1100px;
+      align-items: center;
+    }
 
-  .search-bar label {
-    font-weight: 600;
-    margin-bottom: 8px;
-    display: block;
-    font-size: 16px;
-  }
+    /* Para quebrar em colunas no mobile */
+    @media (max-width: 768px) {
+      .search-bar {
+        flex-wrap: wrap;       /* Quebra para múltiplas linhas no mobile */
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
 
-  .search-bar .form-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 200px;
-  }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative; /* Para posicionar o popup de hóspedes se precisar */
+      flex: 1;
+    }
 
-  .search-bar button {
-    padding: 18px 32px;
-    background-color: #0c1e35;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 18px;
-    transition: background 0.3s;
-  }
+    /* Inputs e selects */
+    .search-bar select,
+    .search-bar input[type="text"] {
+      padding: 16px 16px 16px 50px; /* Espaço para ícone à esquerda */
+      border: 1px solid #1c3c4c;    /* Borda fina #1c3c4c */
+      border-radius: 8px;
+      font-size: 16px;
+      color: #1c3c4c;
+      width: 100%;
+    }
 
-  .search-bar button:hover {
-    background-color: #1e3a5f;
-  }
-</style>
+    /* Ícones nos inputs */
+    .icon-calendar {
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747310.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
 
+    .icon-people {
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
+
+    /* Botão */
+    .search-bar button {
+      padding: 16px 32px;
+      background-color: #1c3c4c; /* Fundo do botão */
+      color: #fff;               /* Texto branco */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.3s;
+      white-space: nowrap; /* Para evitar quebra no texto do botão */
+    }
+
+    .search-bar button:hover {
+      background-color: #1f4a60; /* Tom mais claro ao hover */
+    }
+
+    /* -------- LITEPICKER (CALENDÁRIO) -------- */
+    /* Ajustes para deixar o calendário mais bonito */
+    .litepicker {
+      background-color: #fff;
+      border-radius: 10px;
+      color: #1c3c4c;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Container dos meses */
+    .litepicker .litepicker-months {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    /* Cada mês */
+    .litepicker .month-item {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    /* Cada dia */
+    .litepicker .day-item {
+      border-radius: 4px;
+      color: #1c3c4c;
+    }
+    .litepicker .day-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Dias selecionados */
+    .litepicker .is-start-date,
+    .litepicker .is-end-date,
+    .litepicker .is-in-range {
+      background-color: #1c3c4c !important;
+      color: #fff !important;
+    }
+
+    /* -------- POPUP HÓSPEDES -------- */
+    /* O input real que vai no form será um hidden. Este é só a exibição */
+    #guestsDisplay {
+      padding: 16px 16px 16px 50px;
+      border: 1px solid #1c3c4c;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #1c3c4c;
+      width: 100%;
+      cursor: pointer;
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
+
+    /* Popup container */
+    .guests-popup {
+      display: none; /* hidden por padrão */
+      position: absolute;
+      top: 60px; /* Ajuste conforme a altura do input */
+      left: 0;
+      background: #fff;
+      border: 1px solid #1c3c4c;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+      width: 200px;
+    }
+
+    /* Botões dentro do popup */
+    .guests-popup button {
+      background: none;
+      border: 1px solid #1c3c4c;
+      color: #1c3c4c;
+      font-size: 16px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    /* Centraliza as setas e o contador */
+    .guests-popup .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .guests-popup .controls span {
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* Botão OK no popup */
+    .guests-popup .ok-btn {
+      width: 100%;
+      background-color: #1c3c4c;
+      color: #fff;
+      border: none;
+      margin-top: 8px;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
 <body>
+
   <form class="search-bar" action="https://beds24.com/booking2.php" method="GET" target="_blank">
+    <!-- Campo hidden para enviar o número de hóspedes real no form -->
     <input type="hidden" name="ownerid" value="141141" />
-    
+    <input type="hidden" name="guests" id="guestsHidden" value="2" />
+
+    <!-- Localização -->
     <div class="form-group">
-      <label for="location">Localização</label>
       <select id="location" name="location">
-        <option value="">Selecionar...</option>
+        <option value="">Localização</option>
         <option value="Funchal">Funchal</option>
         <option value="Santa Cruz">Santa Cruz</option>
         <option value="Machico">Machico</option>
       </select>
     </div>
-    
+
+    <!-- Check-in -->
     <div class="form-group">
-      <label for="checkin">Check-In</label>
-      <input type="text" id="checkin" name="checkin" placeholder="Selecionar data" autocomplete="off">
+      <input 
+        type="text" 
+        id="checkin" 
+        name="checkin" 
+        class="icon-calendar" 
+        placeholder="Check-In" 
+        autocomplete="off"
+      >
     </div>
 
+    <!-- Check-out -->
     <div class="form-group">
-      <label for="checkout">Check-Out</label>
-      <input type="text" id="checkout" name="checkout" placeholder="Selecionar data" autocomplete="off">
+      <input 
+        type="text" 
+        id="checkout" 
+        name="checkout" 
+        class="icon-calendar" 
+        placeholder="Check-Out" 
+        autocomplete="off"
+      >
     </div>
 
+    <!-- Hóspedes (só exibição) -->
     <div class="form-group">
-      <label for="guests">Hóspedes</label>
-      <input type="number" name="guests" id="guests" min="1" max="10" value="2">
+      <input 
+        type="text" 
+        id="guestsDisplay" 
+        value="2" 
+        readonly 
+      />
+      <!-- Popup para selecionar hóspedes -->
+      <div id="guestsPopup" class="guests-popup">
+        <div class="controls">
+          <button type="button" id="minusBtn">-</button>
+          <span id="countSpan">2</span>
+          <button type="button" id="plusBtn">+</button>
+        </div>
+        <button type="button" class="ok-btn" id="okBtn">OK</button>
+      </div>
     </div>
 
+    <!-- Botão Procurar -->
     <button type="submit">Procurar</button>
   </form>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   <script>
+    /* ---- Calendário (Litepicker) ---- */
     const picker = new Litepicker({
       element: document.getElementById('checkin'),
       elementEnd: document.getElementById('checkout'),
@@ -126,6 +292,45 @@
       tooltipNumber: (totalDays) => {
         return totalDays - 1;
       }
+    });
+
+    /* ---- Popup de Hóspedes ---- */
+    const guestsDisplay = document.getElementById('guestsDisplay');
+    const guestsPopup   = document.getElementById('guestsPopup');
+    const minusBtn      = document.getElementById('minusBtn');
+    const plusBtn       = document.getElementById('plusBtn');
+    const okBtn         = document.getElementById('okBtn');
+    const countSpan     = document.getElementById('countSpan');
+    const guestsHidden  = document.getElementById('guestsHidden');
+
+    let guestsCount = 2; // valor inicial
+
+    // Ao clicar no campo "Hóspedes", exibe o popup
+    guestsDisplay.addEventListener('click', () => {
+      guestsPopup.style.display = 'block';
+    });
+
+    // Botão "-"
+    minusBtn.addEventListener('click', () => {
+      if (guestsCount > 1) {
+        guestsCount--;
+        countSpan.textContent = guestsCount;
+      } else {
+        alert("O número mínimo de hóspedes é 1");
+      }
+    });
+
+    // Botão "+"
+    plusBtn.addEventListener('click', () => {
+      guestsCount++;
+      countSpan.textContent = guestsCount;
+    });
+
+    // Botão "OK" -> fecha popup, atualiza input
+    okBtn.addEventListener('click', () => {
+      guestsPopup.style.display = 'none';
+      guestsDisplay.value = guestsCount;
+      guestsHidden.value  = guestsCount; // valor enviado no form
     });
   </script>
 </body>
