@@ -40,7 +40,7 @@
       border-radius: 40px; /* Dobro de 20px */
       box-shadow: 0 24px 72px rgba(0, 0, 0, 0.12);
       width: 100%;
-      max-width: 1100px;
+      /* Removido max-width para que o container se expanda conforme necessário */
       align-items: center;
     }
 
@@ -64,7 +64,7 @@
     .search-bar select,
     .search-bar input[type="text"] {
       padding: 32px 32px 32px 100px; /* Dobro de 16 e 50 */
-      border: 2px solid #1c3c4c;      /* Borda dobrada em espessura */
+      border: 2px solid #1c3c4c;      /* Borda dobrada */
       border-radius: 16px;            /* Dobro de 8px */
       font-size: 32px;                /* Dobro de 16px */
       color: #1c3c4c;
@@ -160,7 +160,8 @@
       padding: 24px; /* Dobro de 12px */
       box-shadow: 0 8px 24px rgba(0,0,0,0.15);
       z-index: 999;
-      width: 400px; /* Dobro de 200px */
+      width: 100%; /* Para se adaptar ao container */
+      max-width: 400px; /* Limite máximo para telas grandes */
     }
 
     .guests-popup button {
@@ -197,7 +198,6 @@
       cursor: pointer;
       font-size: 32px;  /* Dobro de 16px */
     }
-
   </style>
 </head>
 <body>
@@ -279,9 +279,7 @@
         one: 'noite',
         other: 'noites'
       },
-      tooltipNumber: (totalDays) => {
-        return totalDays - 1;
-      }
+      tooltipNumber: (totalDays) => totalDays - 1
     });
 
     /* ---- Popup de Hóspedes ---- */
@@ -293,7 +291,7 @@
     const countSpan     = document.getElementById('countSpan');
     const guestsHidden  = document.getElementById('guestsHidden');
 
-    let guestsCount = 2; // valor inicial
+    let guestsCount = 2;
 
     guestsDisplay.addEventListener('click', () => {
       guestsPopup.style.display = 'block';
