@@ -7,207 +7,165 @@
 
   <!-- Fonte e Estilos -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" 
-    rel="stylesheet"
-  >
-  
-  <!-- CSS do Litepicker -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
 
- <style>
-  * {
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    color: #1c3c4c;
-  }
-
-  .search-bar {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    background: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-    width: 50%;
-    align-items: center;
-  }
-
-  @media (max-width: 1024px) {
-    .search-bar {
-      flex-wrap: wrap;
-      width: 90%;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    flex: 1;
-    min-width: 0;
-  }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      color: #1c3c4c;
+    }
 
-  .search-bar select,
-  .search-bar input[type="text"] {
-    padding: 16px 16px 16px 50px;
-    border: 1px solid #1c3c4c;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #1c3c4c;
-    width: 100%;
-  }
+    .search-bar {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      width: 50%;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
 
-  .icon-calendar {
-    background: url('https://cdn-icons-png.flaticon.com/512/747/747310.png') no-repeat 16px center;
-    background-size: 20px 20px;
-  }
+    @media (max-width: 1024px) {
+      .search-bar {
+        flex-wrap: wrap;
+        width: 90%;
+      }
+    }
 
-  .icon-people {
-    background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
-    background-size: 20px 20px;
-  }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex: 1;
+      min-width: 0;
+    }
 
-  .search-bar button {
-    padding: 16px 32px;
-    background-color: #1c3c4c;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 16px;
-    transition: background 0.3s;
-    white-space: nowrap;
-  }
+    .search-bar select,
+    .search-bar input[type="text"] {
+      padding: 16px 16px 16px 50px;
+      border: 1px solid #1c3c4c;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #1c3c4c;
+      width: 100%;
+    }
 
-  .search-bar button:hover {
-    background-color: #1f4a60;
-  }
+    .icon-calendar {
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747310.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
 
-  .litepicker {
-    background-color: #fff;
-    border-radius: 10px;
-    color: #1c3c4c;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    font-family: 'Open Sans', sans-serif;
-    z-index: 9999 !important;
-    position: absolute !important;
-}
+    .icon-people {
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
 
-  }
+    .search-bar button {
+      padding: 16px 32px;
+      background-color: #1c3c4c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
 
-  .litepicker .litepicker-months {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-  }
+    .search-bar button:hover {
+      background-color: #1f4a60;
+    }
 
-  .litepicker .month-item {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 10px;
-  }
+    .litepicker {
+      position: absolute !important;
+      z-index: 9999 !important;
+    }
 
-  .litepicker .day-item {
-    border-radius: 4px;
-    color: #1c3c4c;
-  }
+    #guestsDisplay {
+      padding: 16px 16px 16px 50px;
+      border: 1px solid #1c3c4c;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #1c3c4c;
+      width: 100%;
+      cursor: pointer;
+      background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
+      background-size: 20px 20px;
+    }
 
-  .litepicker .day-item:hover {
-    background-color: #f0f0f0;
-  }
+    .guests-popup {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #fff;
+      border: 1px solid #1c3c4c;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 999;
+      width: 100%;
+      max-width: 300px;
+    }
 
-  .litepicker .is-start-date,
-  .litepicker .is-end-date,
-  .litepicker .is-in-range {
-    background-color: #1c3c4c !important;
-    color: #fff !important;
-  }
+    .guests-popup button {
+      background: none;
+      border: 1px solid #1c3c4c;
+      color: #1c3c4c;
+      font-size: 16px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 5px;
+    }
 
-  #guestsDisplay {
-    padding: 16px 16px 16px 50px;
-    border: 1px solid #1c3c4c;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #1c3c4c;
-    width: 100%;
-    cursor: pointer;
-    background: url('https://cdn-icons-png.flaticon.com/512/747/747376.png') no-repeat 16px center;
-    background-size: 20px 20px;
-  }
+    .guests-popup .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
 
-  .guests-popup {
-    display: none;
-    position: absolute;
-    top: 40px;
-    left: 0;
-    background: #fff;
-    border: 1px solid #1c3c4c;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 999;
-    width: 100%;
-    max-width: 300px;
-  }
+    .guests-popup .controls span {
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: 600;
+    }
 
-  .guests-popup button {
-    background: none;
-    border: 1px solid #1c3c4c;
-    color: #1c3c4c;
-    font-size: 16px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-
-  .guests-popup .controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-
-  .guests-popup .controls span {
-    margin: 0 10px;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .guests-popup .ok-btn {
-    width: 100%;
-    background-color: #1c3c4c;
-    color: #fff;
-    border: none;
-    margin-top: 8px;
-    padding: 8px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-</style>
-
-
+    .guests-popup .ok-btn {
+      width: 100%;
+      background-color: #1c3c4c;
+      color: #fff;
+      border: none;
+      margin-top: 8px;
+      padding: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 
   <form class="search-bar" action="https://beds24.com/booking2.php" method="GET" target="_blank">
-    <!-- Campo hidden para enviar o número de hóspedes real -->
     <input type="hidden" name="ownerid" value="141141" />
     <input type="hidden" name="guests" id="guestsHidden" value="2" />
 
-    <!-- Localização -->
     <div class="form-group">
       <select id="location" name="location">
         <option value="">Localização</option>
@@ -217,7 +175,6 @@
       </select>
     </div>
 
-    <!-- Check-in -->
     <div class="form-group">
       <input 
         type="text" 
@@ -229,7 +186,6 @@
       >
     </div>
 
-    <!-- Check-out -->
     <div class="form-group">
       <input 
         type="text" 
@@ -241,7 +197,6 @@
       >
     </div>
 
-    <!-- Hóspedes (apenas exibição com popup) -->
     <div class="form-group">
       <input 
         type="text" 
@@ -259,14 +214,11 @@
       </div>
     </div>
 
-    <!-- Botão Procurar -->
     <button type="submit">Procurar</button>
   </form>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
   <script>
-    /* ---- Calendário (Litepicker) ---- */
     const picker = new Litepicker({
       element: document.getElementById('checkin'),
       elementEnd: document.getElementById('checkout'),
@@ -274,20 +226,12 @@
       format: 'YYYY-MM-DD',
       numberOfMonths: 2,
       numberOfColumns: 2,
-      // Definimos locale customizado para sobrescrever dias e meses
+      parentEl: 'body',
       locale: {
         name: 'pt-PT-custom',
-        months: [
-          'Janeiro','Fevereiro','Março','Abril','Maio','Junho',
-          'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'
-        ],
-        monthsShort: [
-          'Jan','Fev','Mar','Abr','Mai','Jun',
-          'Jul','Ago','Set','Out','Nov','Dez'
-        ],
-        weekdays: [
-          'Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'
-        ],
+        months: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthsShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        weekdays: ['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
         weekdaysShort: ['S','T','Q','Q','S','S','D']
       },
       tooltipText: {
@@ -297,14 +241,13 @@
       tooltipNumber: (totalDays) => totalDays - 1
     });
 
-    /* ---- Popup de Hóspedes ---- */
     const guestsDisplay = document.getElementById('guestsDisplay');
-    const guestsPopup   = document.getElementById('guestsPopup');
-    const minusBtn      = document.getElementById('minusBtn');
-    const plusBtn       = document.getElementById('plusBtn');
-    const okBtn         = document.getElementById('okBtn');
-    const countSpan     = document.getElementById('countSpan');
-    const guestsHidden  = document.getElementById('guestsHidden');
+    const guestsPopup = document.getElementById('guestsPopup');
+    const minusBtn = document.getElementById('minusBtn');
+    const plusBtn = document.getElementById('plusBtn');
+    const okBtn = document.getElementById('okBtn');
+    const countSpan = document.getElementById('countSpan');
+    const guestsHidden = document.getElementById('guestsHidden');
 
     let guestsCount = 2;
 
@@ -329,7 +272,7 @@
     okBtn.addEventListener('click', () => {
       guestsPopup.style.display = 'none';
       guestsDisplay.value = guestsCount;
-      guestsHidden.value  = guestsCount;
+      guestsHidden.value = guestsCount;
     });
   </script>
 </body>
