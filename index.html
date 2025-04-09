@@ -263,22 +263,25 @@
 
     // ✅ NOVO BLOCO: Enviar dados para o Wix
     function enviarPesquisa() {
-      const location = document.getElementById("location").value;
-      const guests = document.getElementById("guestsHidden").value;
-      const checkin = document.getElementById("checkin").value;
-      const checkout = document.getElementById("checkout").value;
+  console.log("🔔 Botão Procurar foi clicado!");
 
-      window.parent.postMessage(
-        {
-          tipo: "pesquisaHoperty",
-          location,
-          guests,
-          checkin,
-          checkout
-        },
-        "*"
-      );
-    }
+  const location = document.getElementById("location").value;
+  const guests = document.getElementById("guestsHidden").value;
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
+
+  window.parent.postMessage(
+    {
+      tipo: "pesquisaHoperty",
+      location,
+      guests,
+      checkin,
+      checkout
+    },
+    "*"
+  );
+}
+
   </script>
 </body>
 </html>
