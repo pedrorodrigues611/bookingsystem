@@ -97,7 +97,6 @@
       z-index: 9999 !important;
     }
 
-    /* Segurança adicional */
     section, .columnStripe, .row {
       position: relative !important;
       z-index: 1 !important;
@@ -169,12 +168,11 @@
 </head>
 <body>
 
-  <form class="search-bar" action="https://beds24.com/booking2.php" method="GET" target="_blank">
-    <input type="hidden" name="ownerid" value="141141" />
-    <input type="hidden" name="guests" id="guestsHidden" value="2" />
+  <form class="search-bar">
+    <input type="hidden" id="guestsHidden" value="2" />
 
     <div class="form-group">
-      <select id="location" name="location">
+      <select id="location">
         <option value="">Localização</option>
         <option value="Funchal">Funchal</option>
         <option value="Santa Cruz">Santa Cruz</option>
@@ -183,11 +181,11 @@
     </div>
 
     <div class="form-group">
-      <input type="text" id="checkin" name="checkin" class="icon-calendar" placeholder="Check-In" autocomplete="off">
+      <input type="text" id="checkin" class="icon-calendar" placeholder="Check-In" autocomplete="off">
     </div>
 
     <div class="form-group">
-      <input type="text" id="checkout" name="checkout" class="icon-calendar" placeholder="Check-Out" autocomplete="off">
+      <input type="text" id="checkout" class="icon-calendar" placeholder="Check-Out" autocomplete="off">
     </div>
 
     <div class="form-group">
@@ -202,7 +200,7 @@
       </div>
     </div>
 
-    <button type="submit">Procurar</button>
+    <button type="button" onclick="enviarPesquisa()">Procurar</button>
   </form>
 
   <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
@@ -262,6 +260,25 @@
       guestsDisplay.value = guestsCount;
       guestsHidden.value = guestsCount;
     });
+
+    // ✅ NOVO BLOCO: Enviar dados para o Wix
+    function enviarPesquisa() {
+      const location = document.getElementById("location").value;
+      const guests = document.getElementById("guestsHidden").value;
+      const checkin = document.getElementById("checkin").value;
+      const checkout = document.getElementById("checkout").value;
+
+      window.parent.postMessage(
+        {
+          tipo: "pesquisaHoperty",
+          location,
+          guests,
+          checkin,
+          checkout
+        },
+        "*"
+      );
+    }
   </script>
 </body>
 </html>
